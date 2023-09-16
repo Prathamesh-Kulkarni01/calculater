@@ -7,7 +7,7 @@ function App() {
   const [inputs, setInputs] = useState({val1:"",val2:""})
   const [output, setOutput] = useState()
   const handleInputs=(e)=>setInputs((pre)=>({...pre, [e.target.name]:e.target.value}))
- const validate=()=>inputs["val1"]&&inputs["val2"]&&typeof inputs["val1"]!==Number && typeof inputs["val2"]!==Number 
+ const validate=()=>inputs["val1"]&&inputs["val2"]&&typeof inputs["val1"]===Number && typeof inputs["val2"]===Number 
  const calculate=(operator)=>{
 switch (operator) {
   case '+':
@@ -24,6 +24,7 @@ switch (operator) {
 }
  } 
  const handleSubmit=(e)=>{
+  console.log(validate());
     if(!validate()){setOutput({status:"Error",value:"Input Fields can not be empty !"})}
     else{
      const value= calculate(e.target.value)
